@@ -2,8 +2,12 @@
 
 import os
 from typing import Optional
-
+import logging
 import ollama
+
+logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("urllib3").setLevel(logging.WARNING)
+logging.basicConfig(level=logging.WARNING)
 
 def generate_command(
     instruction: str,

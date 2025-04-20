@@ -15,11 +15,12 @@ cd aish
 pip install .
 ```
 
-3. Install and start Ollama:
+2a. Install [ollama](https://ollama.com/download)
+
+
+3. Pull fine-tuned model from ollama:
 ```bash
-# Follow the installation instructions for your platform at https://ollama.ai/
-# Then pull the model you want to use:
-ollama pull llama2
+ollama pull hf.co/saisasanky/Llama-3.1-8B-Instruct-4bit-aish_gguf
 ```
 
 ## Usage
@@ -31,22 +32,13 @@ aish "Show the top 5 processes by memory usage"
 
 Advanced options:
 ```bash
-aish --instruction "Find all files modified in the last 24 hours" --model mistral --temperature 0.3
+aish "Find all files modified in the last 24 hours" --model mistral --temperature 0.3
 ```
 
 ### Options
 
-- `--instruction`, `-i`: The natural language instruction to convert (required)
 - `--model`, `-m`: The Ollama model to use (default: llama2)
 - `--temperature`, `-t`: Temperature for command generation (default: 0.2)
-
-## Features
-
-- Converts natural language to bash commands
-- Interactive command execution confirmation
-- Configurable Ollama model and parameters
-- Logging for debugging and monitoring
-- Safe command generation with best practices
 
 ## Requirements
 

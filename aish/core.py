@@ -1,8 +1,7 @@
 """Core functionality for generating bash commands from natural language."""
 
-import os
-from typing import Optional
 import logging
+
 import ollama
 
 logging.getLogger("httpx").setLevel(logging.WARNING)
@@ -61,4 +60,4 @@ def generate_command(
         return command.strip()
         
     except Exception as e:
-        raise ollama.ResponseError(f"Ollama API error: {str(e)}") 
+        raise ollama.ResponseError(f"Ollama API error: {e!s}") 

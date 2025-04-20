@@ -1,13 +1,14 @@
 """Tests for the core functionality of aish."""
 
-import pytest
+from typing import Any
 from unittest.mock import patch
-from typing import Dict, Any
+
+import pytest
 
 from aish.core import generate_command
 
 
-def test_generate_command_success(mock_ollama_response: Dict[str, Any]) -> None:
+def test_generate_command_success(mock_ollama_response: dict[str, Any]) -> None:
     """Test successful command generation."""
     with patch("aish.core.ollama.chat") as mock_chat:
         mock_chat.return_value = mock_ollama_response
@@ -19,7 +20,7 @@ def test_generate_command_success(mock_ollama_response: Dict[str, Any]) -> None:
         mock_chat.assert_called_once()
 
 
-def test_generate_command_without_markdown(mock_ollama_response: Dict[str, Any]) -> None:
+def test_generate_command_without_markdown(mock_ollama_response: dict[str, Any]) -> None:
     """Test command generation when response doesn't have markdown formatting."""
     mock_response = {"message": {"content": "ls -la"}}
     
@@ -53,7 +54,7 @@ def test_generate_command_ollama_error() -> None:
             generate_command("list files")
 
 
-def test_generate_command_custom_model(mock_ollama_response: Dict[str, Any]) -> None:
+def test_generate_command_custom_model(mock_ollama_response: dict[str, Any]) -> None:
     """Test command generation with a custom model."""
     with patch("aish.core.ollama.chat") as mock_chat:
         mock_chat.return_value = {"message": {"content": "ls -la"}}
@@ -70,7 +71,7 @@ def test_generate_command_custom_model(mock_ollama_response: Dict[str, Any]) -> 
         )
 
 
-def test_generate_command_custom_temperature(mock_ollama_response: Dict[str, Any]) -> None:
+def test_generate_command_custom_temperature(mock_ollama_response: dict[str, Any]) -> None:
     """Test command generation with a custom temperature."""
     with patch("aish.core.ollama.chat") as mock_chat:
         mock_chat.return_value = {"message": {"content": "ls -la"}}

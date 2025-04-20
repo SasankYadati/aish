@@ -1,7 +1,6 @@
 """Command-line interface for aish."""
 
 import os
-from typing import Optional
 
 import typer
 from rich.console import Console
@@ -67,8 +66,8 @@ def main(
             os.system(command)
             
     except Exception as e:
-        logger.error(f"Error generating command: {str(e)}")
-        console.print(f"[red]Error: {str(e)}[/red]")
+        logger.error(f"Error generating command: {e!s}")
+        console.print(f"[red]Error: {e!s}[/red]")
         raise typer.Exit(1)
 
 if __name__ == "__main__":

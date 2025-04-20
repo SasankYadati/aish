@@ -3,6 +3,7 @@
 import logging
 from pathlib import Path
 
+
 def setup_logging() -> logging.Logger:
     """Set up logging configuration.
     

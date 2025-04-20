@@ -1,8 +1,7 @@
 """Tests for the CLI functionality of aish."""
 
-import os
+from typing import Any
 from unittest.mock import patch
-from typing import Dict, Any
 
 import pytest
 from typer.testing import CliRunner
@@ -16,7 +15,7 @@ def runner() -> CliRunner:
     return CliRunner()
 
 
-def test_cli_success(runner: CliRunner, mock_ollama_response: Dict[str, Any]) -> None:
+def test_cli_success(runner: CliRunner, mock_ollama_response: dict[str, Any]) -> None:
     """Test successful CLI execution."""
     with patch("aish.core.ollama.chat") as mock_chat, \
          patch("aish.cli.Prompt.ask") as mock_prompt, \
@@ -37,7 +36,7 @@ def test_cli_success(runner: CliRunner, mock_ollama_response: Dict[str, Any]) ->
         mock_system.assert_not_called()
 
 
-def test_cli_execute_command(runner: CliRunner, mock_ollama_response: Dict[str, Any]) -> None:
+def test_cli_execute_command(runner: CliRunner, mock_ollama_response: dict[str, Any]) -> None:
     """Test CLI execution with command execution."""
     with patch("aish.core.ollama.chat") as mock_chat, \
          patch("aish.cli.Prompt.ask") as mock_prompt, \
@@ -58,7 +57,7 @@ def test_cli_execute_command(runner: CliRunner, mock_ollama_response: Dict[str, 
         mock_system.assert_called_once_with("ls -la")
 
 
-def test_cli_custom_model(runner: CliRunner, mock_ollama_response: Dict[str, Any]) -> None:
+def test_cli_custom_model(runner: CliRunner, mock_ollama_response: dict[str, Any]) -> None:
     """Test CLI with custom model."""
     with patch("aish.core.ollama.chat") as mock_chat, \
          patch("aish.cli.Prompt.ask") as mock_prompt:
@@ -79,7 +78,7 @@ def test_cli_custom_model(runner: CliRunner, mock_ollama_response: Dict[str, Any
         assert mock_chat.call_args[1]["model"] == "custom-model"
 
 
-def test_cli_custom_temperature(runner: CliRunner, mock_ollama_response: Dict[str, Any]) -> None:
+def test_cli_custom_temperature(runner: CliRunner, mock_ollama_response: dict[str, Any]) -> None:
     """Test CLI with custom temperature."""
     with patch("aish.core.ollama.chat") as mock_chat, \
          patch("aish.cli.Prompt.ask") as mock_prompt:

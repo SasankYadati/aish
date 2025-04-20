@@ -1,6 +1,6 @@
 # aish
 
-A CLI tool that converts natural language instructions into bash commands.
+aish stands for AI Shell, a CLI tool that converts natural language instructions into executable bash commands.
 
 ## Installation
 

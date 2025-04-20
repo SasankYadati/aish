@@ -15,10 +15,10 @@ cd aish
 pip install .
 ```
 
-2a. Install [ollama](https://ollama.com/download)
+3. Install [ollama](https://ollama.com/download)
 
 
-3. Pull fine-tuned model from ollama:
+4. Pull fine-tuned model from ollama:
 ```bash
 ollama pull hf.co/saisasanky/Llama-3.1-8B-Instruct-4bit-aish_gguf
 ```

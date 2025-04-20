@@ -5,7 +5,7 @@ import os
 import typer
 from rich.console import Console
 from rich.prompt import Prompt
-from typer import Option
+from typer import Argument, Option
 
 from aish.core import generate_command
 from aish.utils import setup_logging
@@ -25,10 +25,8 @@ logger = setup_logging()
 
 @app.command()
 def main(
-    instruction: str = Option(
+    instruction: str = Argument(
         ...,
-        "--instruction",
-        "-i",
         help="Natural language instruction to convert to bash command",
     ),
     model: str = Option(

@@ -4,7 +4,6 @@ import os
 from typing import Optional
 
 import typer
-import pyfiglet
 from rich.console import Console
 from rich.panel import Panel
 from rich.prompt import Prompt
@@ -14,7 +13,7 @@ from rich.table import Table
 from typer import Argument, Option
 
 from aish.core import generate_command
-from aish.utils import setup_logging
+from aish.utils import setup_logging, print_header, print_help, print_command
 
 # Initialize Typer app
 app = typer.Typer(
@@ -24,83 +23,34 @@ app = typer.Typer(
     rich_markup_mode="rich",
 )
 
-# Initialize console
 console = Console()
-
-# Setup logging
 logger = setup_logging()
-
-def print_header() -> None:
-    """Print the aish header."""
-    # 1. Generate art using pyfiglet (choose a font)
-    try:
-        # You can try different fonts like 'standard', 'slant', 'block', 'banner3-D', etc.
-        font_style = 'standard' 
-        ascii_art_text = pyfiglet.figlet_format("AISH", font='small')
-    except pyfiglet.FontNotFound:
-        print(f"[red]Error: pyfiglet font '{font_style}' not found. Using default.[/red]")
-        ascii_art_text = pyfiglet.figlet_format("AISH") # Fallback to default
-    except Exception as e:
-        print(f"[red]Error generating pyfiglet art: {e}[/red]")
-        ascii_art_text = "AISH" # Simple text fallback
-    console.print(f"[bold green]{ascii_art_text}[/bold green]", justify="center")
-
-def print_command(command: str) -> None:
-    """Print the generated command in a nice format."""
-    # Create a table for the command
-    table = Table(show_header=False, box=None)
-    table.add_column("Command", style="bold green")
-    table.add_row(Syntax(command, "bash", theme="monokai", line_numbers=False))
-    
-    # Print in a panel
-    console.print(Panel(
-        table,
-        title="[bold green]Generated Command[/bold green]",
-        border_style="green",
-        padding=(1, 2),
-    ))
-
-def print_help() -> None:
-    """Print help information."""
-    help_text = """
-    [bold]Usage:[/bold]
-      aish "your instruction"
-    
-    [bold]Examples:[/bold]
-      • aish "Show disk usage"
-      • aish "Find all Python files"
-      • aish "List running processes"
-    
-    [bold]Options:[/bold]
-      --model, -m      Model to use (default: llama2)
-      --temperature, -t Temperature (0.0 to 1.0)
-    """
-    console.print(Panel(
-        Markdown(help_text),
-        title="[bold blue]Help[/bold blue]",
-        border_style="blue",
-        padding=(1, 2),
-    ))
 
 @app.command()
 def main(
-    instruction: str = Argument(
-        ...,
+    instruction: Optional[str] = Argument(
+        None,
         help="Natural language instruction to convert to bash command",
     ),
-    model: str = Option(
+    model: Optional[str] = Option(
         "hf.co/saisasanky/Llama-3.1-8B-Instruct-4bit-aish_gguf",
         "--model",
         "-m",
         help="Ollama model to use for command generation",
     ),
-    temperature: float = Option(
+    temperature: Optional[float] = Option(
         0.2,
         "--temperature",
         "-t",
         help="Temperature for command generation (0.0 to 1.0)",
         min=0.0,
         max=1.0,
+    ),
+    yolo: Optional[bool] = Option(
+        None,
+        "--yolo",
+        "-y",
+        help="Use yolo mode (execute the command immediately)",
     ),
     help: Optional[bool] = Option(
         None,
@@ -117,23 +67,23 @@ def main(
         temperature: The temperature parameter for command generation
         help: Show help message
     """
-    if help:
-        print_header()
-        print_help()
+    if help or not instruction:
+        print_header(console, yolo)
+        print_help(console)
         raise typer.Exit()
         
     try:
         # Print header
-        print_header()
+        print_header(console, yolo)
         
         # Generate command
         command = generate_command(instruction, model, temperature)
         
         # Print the command
-        print_command(command)
+        print_command(console, command)
         
         # Ask for confirmation before executing
-        if Prompt.ask(
+        if yolo or Prompt.ask(
             "\n[bold yellow]Execute command?[/bold yellow]",
             choices=["y", "n"],
             default="n",

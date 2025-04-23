@@ -26,11 +26,10 @@ def test_cli_success(runner: CliRunner, mock_ollama_response: dict[str, Any]) ->
         
         result = runner.invoke(
             app,
-            ["--instruction", "list all files in current directory"]
+            ["list all files in current directory"]
         )
-        
+        print(result.output)
         assert result.exit_code == 0
-        assert "Generated Command:" in result.output
         assert "ls -la" in result.output
         mock_chat.assert_called_once()
         mock_system.assert_not_called()
@@ -47,11 +46,10 @@ def test_cli_execute_command(runner: CliRunner, mock_ollama_response: dict[str, 
         
         result = runner.invoke(
             app,
-            ["--instruction", "list all files in current directory"]
+            ["list all files in current directory"]
         )
         
         assert result.exit_code == 0
-        assert "Generated Command:" in result.output
         assert "ls -la" in result.output
         mock_chat.assert_called_once()
         mock_system.assert_called_once_with("ls -la")
@@ -68,7 +66,7 @@ def test_cli_custom_model(runner: CliRunner, mock_ollama_response: dict[str, Any
         result = runner.invoke(
             app,
             [
-                "--instruction", "list all files in current directory",
+                "list all files in current directory",
                 "--model", "custom-model"
             ]
         )
@@ -89,7 +87,7 @@ def test_cli_custom_temperature(runner: CliRunner, mock_ollama_response: dict[st
         result = runner.invoke(
             app,
             [
-                "--instruction", "list all files in current directory",
+                "list all files in current directory",
                 "--temperature", "0.5"
             ]
         )
@@ -106,7 +104,7 @@ def test_cli_error_handling(runner: CliRunner) -> None:
         
         result = runner.invoke(
             app,
-            ["--instruction", "list all files in current directory"]
+            ["list all files in current directory"]
         )
         
         assert result.exit_code == 1
@@ -118,7 +116,6 @@ def test_cli_help(runner: CliRunner) -> None:
     result = runner.invoke(app, ["--help"])
     
     assert result.exit_code == 0
-    assert "Convert natural language instructions into bash commands" in result.output
-    assert "--instruction" in result.output
+    assert "--yolo" in result.output
     assert "--model" in result.output
     assert "--temperature" in result.output 

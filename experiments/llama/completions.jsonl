@@ -1,0 +1,300 @@
+{"completion": "find. -type f -name '*'"}
+{"completion": "find. -name '*' -print"}
+{"completion": "lsof"}
+{"completion": "cp /testbed/hello.php /testbed/hello-COPY.php"}
+{"completion": "touch /testbed/test.txt"}
+{"completion": "sudo mkdir /testbed/test_dir"}
+{"completion": "rm does_not_exist.txt"}
+{"completion": "echo 'hello world'"}
+{"completion": "pwd"}
+{"completion": "date"}
+{"completion": "echo $USER"}
+{"completion": "rm -rf fake_dir"}
+{"completion": "echo $SHELL"}
+{"completion": "printenv"}
+{"completion": "echo ~"}
+{"completion": "echo $PATH"}
+{"completion": "cat setup_nl2b_fs_1.sh"}
+{"completion": "cat setup_nl2b_fs_1.sh | head -n 5"}
+{"completion": "tail -5 setup_nl2b_fs_1.sh"}
+{"completion": "sed -n '10p' setup_nl2b_fs_1.sh"}
+{"completion": "echo $(which bash)"}
+{"completion": "history"}
+{"completion": "sar -u"}
+{"completion": "uptime"}
+{"completion": "sysctl -a | grep'sysctl.net.ipv4.tcp_available_congestion_control'"}
+{"completion": "htop"}
+{"completion": "htop"}
+{"completion": "free -m"}
+{"completion": "df -h"}
+{"completion": "cat /proc/version"}
+{"completion": "hostname"}
+{"completion": "ip addr show | awk 'BEGIN{print \"ip addr show\"}; {print $2}'"}
+{"completion": "cat /etc/resolv.conf | grep nameserver | awk '{print $2}'"}
+{"completion": "ip link"}
+{"completion": "ip route"}
+{"completion": "who -r"}
+{"completion": "w -u"}
+{"completion": "openssl version"}
+{"completion": "echo \"hello\" | base64"}
+{"completion": "base64 --decode aGVsbG8="}
+{"completion": "grep \"console\" setup_nl2b_fs_1.sh"}
+{"completion": "stat --format=\"%n %y %z\" setup_nl2b_fs_1.sh"}
+{"completion": "gzip -k /testbed/hello.php"}
+{"completion": "tar -cf /testbed/hello.tar /testbed/hello.php"}
+{"completion": "apt-cache show curl"}
+{"completion": "jobs"}
+{"completion": "tput -T type"}
+{"completion": "ps -p pid -o nice"}
+{"completion": "echo $!"}
+{"completion": "time echo 'hello'"}
+{"completion": "groups $(whoami)"}
+{"completion": "id"}
+{"completion": "crontab -l"}
+{"completion": "umask"}
+{"completion": "lscpu"}
+{"completion": "echo $(awk '/MemTotal/ {print $2}' /proc/meminfo)"}
+{"completion": "ssh -v"}
+{"completion": "cat ~/.bash_profile"}
+{"completion": "echo $LANG"}
+{"completion": "lsblk"}
+{"completion": "find. -size +100M"}
+{"completion": "ln -s /testbed/hello.php /testbed/link"}
+{"completion": "sudo chown nobody /testbed/test.txt"}
+{"completion": "sudo chgrp nogroup /testbed/test.txt"}
+{"completion": "chmod -R a-r /testbed/test.txt"}
+{"completion": "wc -l setup_nl2b_fs_1.sh"}
+{"completion": "sort setup_nl2b_fs_1.sh"}
+{"completion": "uniq -u setup_nl2b_fs_1.sh"}
+{"completion": "sudo netstat"}
+{"completion": "ip link show"}
+{"completion": "cal -3"}
+{"completion": "systemctl list-units --type=service --state=running"}
+{"completion": "cat /proc/stat | grep boot_time"}
+{"completion": "swapon --show"}
+{"completion": "sudo sysctl -a"}
+{"completion": "pacman -Ss"}
+{"completion": "zsh -l"}
+{"completion": "getent passwd | cut -d: -f1"}
+{"completion": "getent group"}
+{"completion": "echo '/usr/local/bin/my_script.sh' | awk -F/ '{print $NF}'"}
+{"completion": "dig google.com"}
+{"completion": "echo '/usr/local/bin/my_script.sh' | sed -e's/\\/[^\\/]*$//'"}
+{"completion": "wall \"System maintenance in 10 minutes!\""}
+{"completion": "file setup_nl2b_fs_1.sh"}
+{"completion": "cat setup_nl2b_fs_1.sh | wrap | head"}
+{"completion": "printenv"}
+{"completion": "nproc"}
+{"completion": "ulimit -n"}
+{"completion": "ulimit -u"}
+{"completion": "echo $(echo \"scale=2; $(echo $(( $(awk 'BEGIN {print 1e9}' ) - $(awk 'BEGIN {print 1e9}' ) ) / $(echo $(( $(awk 'BEGIN {print 1e9}' ) - $(awk 'BEGIN {print 1e9}' ) ) * 1000000 ) ) | bc -l) * 1000000\" | bc -l)"}
+{"completion": "echo $(getconf LONG_MAX)"}
+{"completion": "tree -L 2"}
+{"completion": "grep -o \"the\" setup_nl2b_fs_1.sh | wc -l"}
+{"completion": "ls -l | wc -l"}
+{"completion": "echo $(cat setup_nl2b_fs_1.sh | head -n1)"}
+{"completion": "tail -n 1 setup_nl2b_fs_1.sh"}
+{"completion": "cat setup_nl2b_fs_1.sh | sed -n '3,5p'"}
+{"completion": "cat setup_nl2b_fs_1.sh | awk 'NR%2==0'"}
+{"completion": "wc -w setup_nl2b_fs_1.sh"}
+{"completion": "find. -empty -type f -exec rm -f {} \\;"}
+{"completion": "cat setup_nl2b_fs_1.sh | grep -E \"^\\S{1,20}\""}
+{"completion": "grep 'the' setup_nl2b_fs_1.sh"}
+{"completion": "grep -E 'the.*a' setup_nl2b_fs_1.sh"}
+{"completion": "sha512 setup_nl2b_fs_1.sh"}
+{"completion": "openssl enc -aes-256-cbc -in setup_nl2b_fs_1.sh -out out.enc -pass pass:password"}
+{"completion": "echo \"hello\" > world.txt"}
+{"completion": "curl -s ip.me"}
+{"completion": "find /testbed -name '*.java' | xargs md5sum | sort | uniq -d"}
+{"completion": "echo $(find /testbed/dir2/subdir2 -type f | sort -t/ -k5,5 | xargs -I{} md5sum {} | awk '{print $1}' | sort | xargs md5sum)"}
+{"completion": "sort \"$FILES\" | xargs md5sum"}
+{"completion": "echo $(find /testbed/dir1/subdir1 -name '*.py' | xargs -I{} md5sum {} | sort | cut -d''-f1 | xargs -I{} echo $(find /testbed/dir1/subdir1 -name '*.py' | xargs -I{} md5sum {} | sort | cut -d''-f1 | xargs -I{} echo $(find /testbed/dir1/subdir1 -name '*.py' | xargs -I{} md5sum {} | sort | cut -d''-f1 | xargs -I"}
+{"completion": "find /testbed -name \"*.txt\" -exec du -h {} \\; | xargs -I {} echo -n $(hostname)'' {}"}
+{"completion": "find /testbed -name '*.php' -exec chmod 755 {} \\;"}
+{"completion": "shuf -i 0-1 -n 1 | xargs -I {} echo \"{}\" | grep -q screen && echo \"True\" || echo \"False\""}
+{"completion": "echo $(cat /testbed/dir3/subdir1/subsubdir1/textfile3.txt | grep -f /testbed/dir2/subdir1/textfile2.txt)"}
+{"completion": "mean $(cat /testbed/*.txt | wc -w)"}
+{"completion": "find /testbed -type f -name '*.txt' -size +0 -size -6c | xargs wc | awk '{sum+=$1} END {print sum/NR}'"}
+{"completion": "find /testbed -name '*FooBar*' -exec cp {} /testbed/dir3/subdir1/subsubdir1/tmp \\;"}
+{"completion": "find /testbed -name \"*.txt\" | xargs -I {} echo \"Searching in {}\"; grep -i \"another\" {}"}
+{"completion": "xxd -p -l 16 /testbed/textfile7.txt"}
+{"completion": "find /testbed -name '*FooBar*file.txt' -exec cp -p {}./ \\;"}
+{"completion": "cp /testbed/*FooBar* /testbed/dir3/subdir1/subsubdir1/tmp"}
+{"completion": "find /testbed -name '*.c' | xargs wc -l"}
+{"completion": "find. -name '*php' -exec wc -l {} \\; | awk '{sum+=$1} END {print sum}'"}
+{"completion": "find /testbed -name \"*.php\" | xargs wc -l"}
+{"completion": "find /testbed -name '*.py' -exec md5sum {} \\;"}
+{"completion": "find /testbed -name '*.html' | xargs grep -c \"foo\""}
+{"completion": "find /testbed -name '*.php' | wc -l; find /testbed -name '*.php' -exec chmod 755 {} \\;"}
+{"completion": "find /testbed -name '*file*' | xargs wc -l"}
+{"completion": "find ${DIRECTORY} -type f | grep -E '[aeiou]' | wc -l"}
+{"completion": "find /testbed -type f | xargs -I {} echo -n {} | grep -oE '\\.[a-zA-Z0-9]+' | sort | uniq -c | sort -rn"}
+{"completion": "find /testbed -name '*.gz' | xargs gzip -dc | wc -l"}
+{"completion": "find /testbed -type f | wc -l"}
+{"completion": "find /testbed -name '*.php' | xargs wc -l | sort -k1 -n"}
+{"completion": "find /testbed -name '*.php' | xargs wc -l | sort -nr"}
+{"completion": "grep -oE '([0-9]{1,3}\\.){3}[0-9]{1,3}' /etc/networks | sort | uniq -c | sort -rn"}
+{"completion": "grep -c '[a-zA-Z0-9]' /testbed/*.php"}
+{"completion": "find /testbed -name \"*.php\" -o -name \"*.js\" | xargs wc -l"}
+{"completion": "find testbed -name dir1 -exec touch dir1/abc.txt \\;"}
+{"completion": "tar -czf logs.tar.gz --exclude-vcs --exclude-from=logs.exclude $(find /var/log/ -type f -mtime +1 -name '*.*' -exec ls -l {} \\; | awk '{print $9}')"}
+{"completion": "find /testbed/dir3/subdir1/subsubdir1/tmp -type f -mtime +2 -exec rm {} \\;"}
+{"completion": "find /testbed -type f -exec ls -S {} \\; | head -5"}
+{"completion": "find /testbed -type f -size +0c | xargs du | sort -n | head -n 5"}
+{"completion": "find /testbed -type f -printf \"%s %p\\n\" | sort -n | head -n 5"}
+{"completion": "find /testbed -type f -exec ls -l {} \\; | awk '{print $5}' | sort -nr | head -n 5"}
+{"completion": "find testbed -name \"*.java\" | grep \"Hello\""}
+{"completion": "find /testbed -name '*.txt' | sort | uniq -c | awk 'NR>1{print $2\" \"$1}'"}
+{"completion": "find testbed/dir1 -type f -print0 | xargs -0 -I{} find testbed/dir2 -type f -print0 | xargs -0 -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{} -I{}"}
+{"completion": "find /testbed -type f -exec grep -l 'Hello' {} \\; | xargs -I {} echo {}"}
+{"completion": "find /testbed -name \"*.java\" | xargs wc -l"}
+{"completion": "ln -s /testbed/dir3/subdir1/subsubdir1/FooBar/ /"}
+{"completion": "find /testbed/dir1 -perm -553 -exec ls -l {} \\;"}
+{"completion": "find /testbed -name \"*.php\" | xargs grep \"world\""}
+{"completion": "find /system/folder1 -name \"*hello*\" -exec sed -i's/hello/hello 1/g' {} \\;"}
+{"completion": "grep -r 'foo' /system | awk '{print NR\" \" $0}'"}
+{"completion": "find /system -name '*' -print"}
+{"completion": "find /system/folder2 -print"}
+{"completion": "find /system -type d -name \"*.out\""}
+{"completion": "rm -rf /system/*.txt"}
+{"completion": "find /system/folder3/temp -type d -empty -delete"}
+{"completion": "find /system/folder3/temp -type d -empty -exec rm -rf {} \\;"}
+{"completion": "find /system/folder1 -type f! -name '*txt' -exec rm {} \\;"}
+{"completion": "find /system/folder2 -name \"special*\" -exec rename's/special/regular/' {} \\;"}
+{"completion": "find /system -name foo -print0 | xargs -0 grep -l -H \"foo\" | xargs -I{} echo \"{}\""}
+{"completion": "find /system/folder3/ -type f -name '*.*' -printf \"%f\\n\""}
+{"completion": "tar -xvf /system/folder2.tar.gz | grep -i special"}
+{"completion": "cat system/folder3/temp/temp1/text1.txt | tr -d \"\\r\""}
+{"completion": "find /system/folder1 -name '*.doc' -exec rm {} \\;"}
+{"completion": "find /system/folder1 -name '*.log' -exec rm -f {} \\;"}
+{"completion": "find /system -maxdepth 1 -type f -name '*.txt' -exec rm -f {} \\;"}
+{"completion": "find /system/folder3/backup_dbg -name '*.sql' -mtime +25 -exec rm -f {} \\;"}
+{"completion": "find /system/folder1 -name '*.txt' -mmin +5 -exec rm {} \\;"}
+{"completion": "find /system/folder1 -mindepth 1 -maxdepth 1 -mtime +5 -type f! -name \"keep.txt\" -name \"*.txt\" -exec rm {} \\;"}
+{"completion": "find /system/folder1 -name 'new*.sh' -exec rm -f {} \\;"}
+{"completion": "find /system -name 'a.out' -or -name '*.o' -or -name 'core' | xargs rm -f"}
+{"completion": "tail -5 /system/folder1/data.csv"}
+{"completion": "find /system -type d -name \"temp\" -exec rm -rf {} \\;"}
+{"completion": "find /system/folder3/temp -type f -empty -exec rm {} \\;"}
+{"completion": "find /system -name 'a.out' -or -name '*.o' -mtime -7 -exec rm {} \\;"}
+{"completion": "find /system/folder3/temp -name '.DS_Store' -o -name '._.DS_Store' -o -name '._*' -o -name '.TemporaryItems' -o -name '.apdisk' -exec rm {} \\;"}
+{"completion": "echo \"1/2 [3] (27/03/2012 19:32:54) word word word word 4/5\" | sed's/\\([^0-9]\\)/\\1 /g; s/\\([^)]\\+\\)//g' | column -t"}
+{"completion": "rm -rf /system/folder1/text2 text3 text4"}
+{"completion": "find /system -size -1k -exec rm -f {} \\;"}
+{"completion": "find /system -type f -mtime +31 -exec rm -f {} \\;"}
+{"completion": "echo \"/system/folder3/temp/temp1/text1.txt\""}
+{"completion": "find /system -type f -exec rm -f {} \\;"}
+{"completion": "diff -qr /system/folder1 /system/folder2"}
+{"completion": "df -h /system | awk 'NR==2 {print $4/1024}'"}
+{"completion": "find /system -type d | wc -l"}
+{"completion": "find /system/folder1 -mtime 60 -exec tar -czf /mytarfile.tgz {} \\;"}
+{"completion": "ln -s /system/folder1 /"}
+{"completion": "echo \"$(date)\" \"1\" >> /system/folder3/temp/empty.txt"}
+{"completion": "cat $(find /system -name \"*.txt\") > /system/folder3/temp/concat.txt"}
+{"completion": "find /system -type f -exec cpio -oav /backup {} \\;"}
+{"completion": "find /system -name '*text*' -prune -o -name '*' -exec cp -t /system/folder3/backup_dbg/backup {} \\;"}
+{"completion": "mv /system/folder3/temp/temp1 /system/folder3/temp/temp1_old"}
+{"completion": "cat /system/text1.txt | xxd -p"}
+{"completion": "tar -czf /system/compress_folder1.tar.gz --mtime 2023-01-01 --owner 0 --group 0 /system/folder1"}
+{"completion": "download -o /system/textfile.txt http://example.com/textfile.txt"}
+{"completion": "find /system -size +10"}
+{"completion": "find /system -name \"*.txt\" | xargs md5sum | sort"}
+{"completion": "awk -F'''$1 ~ /system/ {print $2}' /etc/hosts | awk '{print $1}'"}
+{"completion": "find /workspace -mtime -30 -print"}
+{"completion": "find /workspace -name \"*.c\" -size +1k"}
+{"completion": "find /workspace -type f -mmin +60"}
+{"completion": "find /workspace -type f -atime +3600"}
+{"completion": "find /workspace -maxdepth 1 -type d"}
+{"completion": "find /workspace -size 0 -type f -print"}
+{"completion": "find /workspace -size 0 -print"}
+{"completion": "find /workspace -size +1024 -exec rm -f {} \\;"}
+{"completion": "find /workspace -perm g=r -type f"}
+{"completion": "find /workspace -perm 777 -type f -print"}
+{"completion": "find /workspace -name \"*.txt\" -exec ls -l {} \\;"}
+{"completion": "find /workspace -type f -not -path '/workspace/*' -exec mv {} / \\;"}
+{"completion": "find /workspace -mtime -1 -type f -exec mv {} / \\;"}
+{"completion": "find /workspace/dir1 -type f -name '*hello*' -print"}
+{"completion": "du -h /workspace/*"}
+{"completion": "cat /workspace/dir1/long.txt | awk '{print $NF}'"}
+{"completion": "du -ah /workspace | sort -nr | head -n 3"}
+{"completion": "cat /workspace/dir1/long.txt | head -n1"}
+{"completion": "cat /workspace/dir1/a.txt | tail -n1"}
+{"completion": "find /workspace -type f -print0 | xargs -0 rm -f"}
+{"completion": "find /workspace -size +1K -size -32K"}
+{"completion": "find /workspace -name '*' | sort -u -k 2"}
+{"completion": "find /workspace -size +1k | xargs du -sh | sort -rn | head -1"}
+{"completion": "find /workspace -type f -perm -444 -name '*.*'"}
+{"completion": "find ~/workspace -name \"mysql\""}
+{"completion": "find /workspace -type f | xargs -I{} shuf -n 2 <(echo {} | tr '[:upper:]' '[:lower:]') | sort -u | uniq -d"}
+{"completion": "find /workspace -name old2.txt -exec ls -l {} \\; -exec date -r {} \\;"}
+{"completion": "find /workspace -type f -exec grep -i \"hello\" {} \\;"}
+{"completion": "find /workspace -type f -exec md5sum {} \\;"}
+{"completion": "find /workspace -type f -exec md5sum {} \\;"}
+{"completion": "find /workspace -type f -name '*.[a-zA-Z0-9]{3,6}' | sort -u | wc -l"}
+{"completion": "cp -r /workspace/* /usr"}
+{"completion": "find /workspace -type f -printf '%T@ %p\\n' | sort -n | head -1"}
+{"completion": "find /workspace -type d -exec du -sh {} \\; | sort -rn | head -2"}
+{"completion": "find /workspace -type f -exec md5sum {} \\; | sort | uniq -d"}
+{"completion": "find /workspace/files.txt | sort | uniq | xargs mkdir -p"}
+{"completion": "du -b /workspace/files.txt | awk '{print $1}' | paste -sd+ | bc"}
+{"completion": "find /workspace -type f -name \".*\" -exec rm -i {} \\;"}
+{"completion": "diff -u /workspace/dir1/long.txt /workspace/dir1/terminate.txt | grep -c '^'"}
+{"completion": "diff -u0 /workspace/dir1/terminate.txt /workspace/dir1/long.txt | wc -l"}
+{"completion": "grep -v '^[[:space:]]*$' /workspace/dir1/a.txt | wc -l"}
+{"completion": "ln -s /workspace/results.txt ~/newlinks"}
+{"completion": "find /workspace -name \".*\" -exec rm {} \\;"}
+{"completion": "h2py -f /workspace/dir1/long.txt -o float64"}
+{"completion": "diff -Naur /workspace/dir1 /workspace/dir2"}
+{"completion": "ls -l /workspace/dir1/sum.c | awk '{print $5}'"}
+{"completion": "awk -F/ '{print $NF}' /workspace/dir1/file.txt"}
+{"completion": "find /workspace -type f -exec du -h {} \\; | sort -rh"}
+{"completion": "du -sh /workspace | awk '{print $2/1024*100}'"}
+{"completion": "cat /workspace/dir1/long.txt | tac"}
+{"completion": "touch workspace/Icon\\r"}
+{"completion": "ln -s /root /workspace/dir1"}
+{"completion": "find /workspace -type f -exec ls -l {} \\;"}
+{"completion": "grep -i \"hello\" /workspace/*"}
+{"completion": "find /workspace -name '*.gz' | xargs -n1 gzip -dc"}
+{"completion": "tar -xvf /workspace/archive.tar.gz -C /backup"}
+{"completion": "ln -s \"/workspace/dir1/terminate.txt\" \"/workspace/test\""}
+{"completion": "cat /proc/version | grep -oEi \"(Linux|kernel) version\\s+\\d+\\.\\d+\\.\\d+\\s+\\d+\" | sed's/.*\\s+\\d+\\.\\d+\\.\\d+\\s+\\(.\\+\\).*/\\1/'"}
+{"completion": "host 127.0.0.1 | rev | cut -d''-f1 | rev"}
+{"completion": "ls $(which grep)"}
+{"completion": "echo \"http://www.google.com\" | sed -e's/.*\\///'"}
+{"completion": "env | sed's/;/\\\\;/g'"}
+{"completion": "pmap --tree"}
+{"completion": "mkdir -p dir/subdir/subsubdir"}
+{"completion": "seq 1 10 | tr'' ':'"}
+{"completion": "rlprint-bindings"}
+{"completion": "nm --defined-only --extern --with-libs --line-numbers path/to/file | grep 'p'"}
+{"completion": "address=$(dig google.com +short | head -n 1); echo $address"}
+{"completion": "echo \"  Hello world;876\t  \" | sed's/[^;0-9]//g'"}
+{"completion": "echo \"  Hello world!\t  \" | sed's/^[[:space:]]*//;s/[[:space:]]*$//;'"}
+{"completion": "echo \"987654321\" | sed's/.$//3'"}
+{"completion": "fsck --source"}
+{"completion": "declare -p H*"}
+{"completion": "who | sort -u | awk '{print $1}'"}
+{"completion": "ping -c 3 192.168.1.1"}
+{"completion": "echo $(printf \"%99s\" | tr'' '=')"}
+{"completion": "who | wc -l"}
+{"completion": "cal 2120 12"}
+{"completion": "cut -d: -f2 /etc/group | sort | uniq"}
+{"completion": "awk 'BEGIN {s=0; for (i=1; i<=10; i++) s=s+i} END {print s}'"}
+{"completion": "find testbed -type f -o -type d | wc -l"}
+{"completion": "find testbed -name '*.py' | wc -l"}
+{"completion": "sort -r textfile1.txt > newfile.txt"}
+{"completion": "find testbed -type f -exec grep -i 'Shell' {} \\;"}
+{"completion": "find testbed -type l"}
+{"completion": "find testbed/ -type f -exec du -c {} \\; | awk '{print $1}' > total_size.txt"}
+{"completion": "find /testbed/dir1 -type f | xargs ls -lh | sort -h -n"}
+{"completion": "find /testbed/dir2 -type f -exec wc -l {} \\;"}
+{"completion": "find /testbed/dir3 -type f -printf \"%s %p\\n\" | sort -nr | head -n 3"}
+{"completion": "find /testbed -type f -mtime -2 -exec tar -czf archive.tar.gz {} \\;"}
+{"completion": "find /testbed -type d -not -name subdir1"}
+{"completion": "find /testbed -type f -exec grep -l \"text file\" {} \\;"}
+{"completion": "find /testbed -type f | xargs md5sum > /testbed/hashes.txt"}
+{"completion": "tail -n 10 /testbed/dir3/subdir1/subsubdir1/textfile3.txt"}
+{"completion": "grep -Hn 'value3' /testbed/dir1/subdir1/jsonfile1.json"}
+{"completion": "find /testbed -type f -mtime -1 -print"}
+{"completion": "find /testbed -name \"*\" | xargs sed -i's/Hello/Hi/g'"}
+{"completion": "cat -n textfile3.txt | cat -n textfile4.txt | cat -s"}

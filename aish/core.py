@@ -8,9 +8,14 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("urllib3").setLevel(logging.WARNING)
 logging.basicConfig(level=logging.WARNING)
 
+models = {
+    "llama":"hf.co/saisasanky/Llama-3.1-8B-Instruct-bnb-4bit-aish-gguf",
+    "qwen":"hf.co/saisasanky/Qwen2.5-Coder-14B-Instruct-bnb-4bit-aish-gguf",
+}
+
 def generate_command(
     instruction: str,
-    model: str = "llama2",
+    model: str,
     temperature: float = 0.2,
 ) -> str:
     """Generate a bash command from a natural language instruction.
@@ -34,9 +39,10 @@ def generate_command(
     user_message = f"Convert this instruction to a bash command: {instruction}"
     
     try:
+        model_url = models[model]
         # Make the API call
         response = ollama.chat(
-            model=model,
+            model=model_url,
             messages=[
                 {"role": "user", "content": user_message},
             ],

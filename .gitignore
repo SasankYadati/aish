@@ -172,3 +172,8 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# experiments
+/experiments/outputs/*
+/experiments/unsloth_compiled_cache
+/experiments/wandb/*

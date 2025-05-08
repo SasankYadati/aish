@@ -33,7 +33,7 @@ def main(
         help="Natural language instruction to convert to bash command",
     ),
     model: Optional[str] = Option(
-        "hf.co/saisasanky/Llama-3.1-8B-Instruct-4bit-aish_gguf",
+        "llama",
         "--model",
         "-m",
         help="Ollama model to use for command generation",

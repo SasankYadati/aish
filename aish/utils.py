@@ -33,7 +33,7 @@ def setup_logging() -> logging.Logger:
     
     return logging.getLogger("aish") 
 
-def print_header(console: Console, yolo_mode: bool = False) -> None:
+def print_header(console: Console) -> None:
     """Print the aish header.
     
     Args:
@@ -41,28 +41,6 @@ def print_header(console: Console, yolo_mode: bool = False) -> None:
         yolo_mode: If True, displays a more trippy and fancy header.
     """
     try:
-        if yolo_mode:
-            # Use a single font with rainbow wave effect
-            ascii_art = pyfiglet.figlet_format("AISH", font='banner3-D')
-            colors = ["red", "yellow", "green", "cyan", "blue", "magenta"]
-            
-            # Create a single wave effect
-            colored_lines = []
-            for line in ascii_art.split('\n'):
-                if line.strip():
-                    colored_line = ""
-                    for j, char in enumerate(line):
-                        # Create a wave pattern by using sine-like color distribution
-                        color_index = (j + len(line) // 2) % len(colors)
-                        color = colors[color_index]
-                        colored_line += f"[{color}]{char}[/{color}]"
-                    colored_lines.append(colored_line)
-            
-            # Print the wave effect
-            for line in colored_lines:
-                console.print(line, justify="center")
-        else:
-            # Normal mode - use simple green text
             ascii_art_text = pyfiglet.figlet_format("AISH", font='small')
             console.print(f"[bold green]{ascii_art_text}[/bold green]", justify="center")
     except Exception as e:
@@ -98,7 +76,7 @@ def print_help(console: Console) -> None:
       • aish "List running processes" --yolo
     
     Options:
-      • --model, -m       Model to use (default: llama-3-8b-aish-finetuned)
+      • --model, -m       Model to use (default: llama-3-8b)
       • --temperature, -t Temperature (0.0 to 1.0)
       • --yolo, -y        Execute the command immediately
     """

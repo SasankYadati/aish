@@ -68,13 +68,13 @@ def main(
         help: Show help message
     """
     if help or not instruction:
-        print_header(console, yolo)
+        print_header(console)
         print_help(console)
         raise typer.Exit()
         
     try:
         # Print header
-        print_header(console, yolo)
+        print_header(console)
         
         # Generate command
         command = generate_command(instruction, model, temperature)

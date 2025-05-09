@@ -9,8 +9,8 @@ logging.getLogger("urllib3").setLevel(logging.WARNING)
 logging.basicConfig(level=logging.WARNING)
 
 models = {
-    "llama":"hf.co/saisasanky/Llama-3.1-8B-Instruct-bnb-4bit-aish-gguf",
-    "qwen":"hf.co/saisasanky/Qwen2.5-Coder-14B-Instruct-bnb-4bit-aish-gguf",
+    "llama":"hf.co/saisasanky/Llama-3.1-8B-Instruct-bnb-4bit-aish-gguf:Q8_0",
+    "qwen":"hf.co/saisasanky/Qwen2.5-Coder-14B-Instruct-bnb-4bit-aish-gguf:Q8_0",
 }
 
 def generate_command(
@@ -44,6 +44,7 @@ def generate_command(
         response = ollama.chat(
             model=model_url,
             messages=[
+                {"role": "system", "content": "You are an assistant that provides exact bash command for given input"},
                 {"role": "user", "content": user_message},
             ],
             options={

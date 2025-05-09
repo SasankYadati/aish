@@ -20,7 +20,7 @@ pip install .
 
 4. Pull fine-tuned model from ollama:
 ```bash
-ollama pull hf.co/saisasanky/Llama-3.1-8B-Instruct-4bit-aish_gguf
+ollama pull hf.co/saisasanky/Llama-3.1-8B-Instruct-bnb-4bit-aish-gguf:Q8_0
 ```
 
 ## Usage

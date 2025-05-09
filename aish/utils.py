@@ -88,23 +88,23 @@ def print_command(console: Console, command: str) -> None:
 def print_help(console: Console) -> None:
     """Print help information."""
     help_text = """
-    [bold]Usage:[/bold]
+    Usage:
       • aish "your instruction"
       • aish "your instruction that you want to execute immediately" --yolo
     
-    [bold]Examples:[/bold]
+    Examples:
       • aish "Show disk usage"
       • aish "Find all Python files"
       • aish "List running processes" --yolo
     
-    [bold]Options:[/bold]
+    Options:
       • --model, -m       Model to use (default: llama-3-8b-aish-finetuned)
       • --temperature, -t Temperature (0.0 to 1.0)
       • --yolo, -y        Execute the command immediately
     """
     console.print(Panel(
         Markdown(help_text),
-        title="[bold blue]Help[/bold blue]",
+        title="Help",
         border_style="blue",
         padding=(1, 2),
     ))

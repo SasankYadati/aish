@@ -34,18 +34,19 @@ def generate_command(
     """
     if not instruction.strip():
         raise ValueError("Instruction cannot be empty")
-    
-    # Create the user message
-    user_message = f"Convert this instruction to a bash command: {instruction}"
+
     
     try:
-        model_url = models[model]
-        # Make the API call
+        if model in models:
+            model_url = models[model]
+        else:
+            model_url = model
+
         response = ollama.chat(
             model=model_url,
             messages=[
                 {"role": "system", "content": "You are an assistant that provides exact bash command for given input"},
-                {"role": "user", "content": user_message},
+                {"role": "user", "content": instruction},
             ],
             options={
                 "temperature": temperature,

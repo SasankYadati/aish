@@ -7,9 +7,6 @@ import typer
 from rich.console import Console
 from rich.panel import Panel
 from rich.prompt import Prompt
-from rich.markdown import Markdown
-from rich.syntax import Syntax
-from rich.table import Table
 from typer import Argument, Option
 
 from aish.core import generate_command

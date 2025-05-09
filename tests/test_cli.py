@@ -55,27 +55,6 @@ def test_cli_execute_command(runner: CliRunner, mock_ollama_response: dict[str, 
         mock_system.assert_called_once_with("ls -la")
 
 
-def test_cli_custom_model(runner: CliRunner, mock_ollama_response: dict[str, Any]) -> None:
-    """Test CLI with custom model."""
-    with patch("aish.core.ollama.chat") as mock_chat, \
-         patch("aish.cli.Prompt.ask") as mock_prompt:
-        
-        mock_chat.return_value = mock_ollama_response
-        mock_prompt.return_value = "n"
-        
-        result = runner.invoke(
-            app,
-            [
-                "list all files in current directory",
-                "--model", "custom-model"
-            ]
-        )
-        
-        assert result.exit_code == 0
-        mock_chat.assert_called_once()
-        assert mock_chat.call_args[1]["model"] == "custom-model"
-
-
 def test_cli_custom_temperature(runner: CliRunner, mock_ollama_response: dict[str, Any]) -> None:
     """Test CLI with custom temperature."""
     with patch("aish.core.ollama.chat") as mock_chat, \

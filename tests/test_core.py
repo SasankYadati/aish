@@ -14,7 +14,7 @@ def test_generate_command_success(mock_ollama_response: dict[str, Any]) -> None:
         mock_chat.return_value = mock_ollama_response
         
         instruction = "list all files in current directory"
-        result = generate_command(instruction)
+        result = generate_command(instruction, "llama", 0.2)
         
         assert result == "ls -la"
         mock_chat.assert_called_once()
@@ -28,7 +28,7 @@ def test_generate_command_without_markdown(mock_ollama_response: dict[str, Any])
         mock_chat.return_value = mock_response
         
         instruction = "list all files in current directory"
-        result = generate_command(instruction)
+        result = generate_command(instruction, "llama", 0.2)
         
         assert result == "ls -la"
 
@@ -36,13 +36,13 @@ def test_generate_command_without_markdown(mock_ollama_response: dict[str, Any])
 def test_generate_command_empty_instruction() -> None:
     """Test command generation with empty instruction."""
     with pytest.raises(ValueError, match="Instruction cannot be empty"):
-        generate_command("")
+        generate_command("", "llama", 0.2)
 
 
 def test_generate_command_whitespace_instruction() -> None:
     """Test command generation with whitespace-only instruction."""
     with pytest.raises(ValueError, match="Instruction cannot be empty"):
-        generate_command("   ")
+        generate_command("   ", "llama", 0.2)
 
 
 def test_generate_command_ollama_error() -> None:
@@ -51,7 +51,7 @@ def test_generate_command_ollama_error() -> None:
         mock_chat.side_effect = Exception("API Error")
         
         with pytest.raises(Exception, match="Ollama API error"):
-            generate_command("list files")
+            generate_command("list files", "llama", 0.2)
 
 
 def test_generate_command_custom_model(mock_ollama_response: dict[str, Any]) -> None:
@@ -61,12 +61,15 @@ def test_generate_command_custom_model(mock_ollama_response: dict[str, Any]) -> 
         
         instruction = "list all files in current directory"
         model = "custom-model"
-        result = generate_command(instruction, model=model)
+        result = generate_command(instruction, model, 0.2)
         
         assert result == "ls -la"
         mock_chat.assert_called_once_with(
             model=model,
-            messages=[{"role": "user", "content": f"Convert this instruction to a bash command: {instruction}"}],
+            messages=[
+                {"role": "system", "content": "You are an assistant that provides exact bash command for given input"},
+                {"role": "user", "content": instruction}
+            ],
             options={"temperature": 0.2, "num_predict": 150}
         )
 
@@ -77,12 +80,16 @@ def test_generate_command_custom_temperature(mock_ollama_response: dict[str, Any
         mock_chat.return_value = {"message": {"content": "ls -la"}}
         
         instruction = "list all files in current directory"
+        model = "custom-model"
         temperature = 0.5
-        result = generate_command(instruction, temperature=temperature)
+        result = generate_command(instruction, model, temperature)
         
         assert result == "ls -la"
         mock_chat.assert_called_once_with(
-            model="llama2",
-            messages=[{"role": "user", "content": f"Convert this instruction to a bash command: {instruction}"}],
+            model=model,
+            messages=[
+                {"role": "system", "content": "You are an assistant that provides exact bash command for given input"},
+                {"role": "user", "content": instruction}
+            ],
             options={"temperature": temperature, "num_predict": 150}
         ) 
